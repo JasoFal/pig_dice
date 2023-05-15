@@ -34,16 +34,21 @@ function PlayerInfo(playerName) {
   this.playerScore = 0;
 }
 
-PlayerInfo.prototype.rollForScore = function() {
+function ScoreObject() {
+  this.turnScore = 0;
+}
+
+ScoreObject.prototype.rollForScore = function() {
   if (diceRoll() != 1) {
-  this.playerScore = this.playerScore + diceRoll();
-  console.log(this.playerScore);
+  this.turnScore = this.turnScore + diceRoll();
+  console.log(this.turnScore);
   } else {
-  return this.playerScore = 0;
+  return this.turnScore = 0;
   }
 };
 
-// 
+// UI Logic
+
 
 
 
