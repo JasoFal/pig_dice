@@ -2,3 +2,6 @@
   display: none;
 }
 
+.current-player {
+  color: red;
+}

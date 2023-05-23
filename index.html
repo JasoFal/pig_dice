@@ -11,6 +11,7 @@
 
 <body>
   <div class="container">
+    <h1 id="main-heading">Pig: The Game</h1>
     <div class="form-group" id="start-area">
       <form id="player-1-name-input">
         <label for="player-1">Player 1 Name</label>
@@ -22,7 +23,7 @@
       </form>
       <button type="button" id="btn-new">Start Game</button>
     </div>
-    <div id="play-area">
+    <div id="play-area" class="hidden ">
       <div class="player player-1 player-current">
         <div class="tempScore">
           <h2 class="name" id="name-1">
@@ -44,12 +45,17 @@
           <p id="current-label">Current Score</p>
           <p id="current-score"></p>
         </div>
-        <form id="btn-inputs">
+        <div id="btn-zone">
           <button type="button" id="btn-roll">Roll Dice</button>
           <button type="button" id="btn-hold">Hold</button>
-        </form>
+        </div>
       </div>
     </div>
+    <div id="victory-area" class="hidden">
+      <h1 id="victory-heading"><span id="player-victor"></span> WINS!!</h1>
+      <button type="button" id="play-again">Play Again</button>
+    </div>
+  </div>
 </body>
 
 </html>

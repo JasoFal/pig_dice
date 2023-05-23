@@ -23,20 +23,31 @@ GameObject.prototype.endTurn = function() {
   this.playerInfo[this.currentPlayerId].totalScore += this.currentScore;
   this.currentScore = 0;
   this.victoryCheck();
+  if (this.gameOver != true) {
   this.switchPlayer();
+  }
 };
 
 GameObject.prototype.victoryCheck = function() {
   if (this.playerInfo[this.currentPlayerId].totalScore >= 100) {
     this.gameOver = true;
-    console.log(this.gameOver);
+    this.playerInfo[this.currentPlayerId].timesWon += 1
   }
+}
+
+GameObject.prototype.resetScore = function() {
+  this.gameOver = false;
+  this.playerInfo[1].totalScore = 0;
+  this.playerInfo[2].totalScore = 0;
+  this.currentScore = 0;
+  this.currentPlayerId = 1;
 }
 
 // Player Constructor
 function Player(name) {
   this.name = name;
   this.totalScore = 0;
+  this.timesWon = 0;
 }
 
 // UI Logic
@@ -64,13 +75,13 @@ function rollEvent() {
   if (gameState.playing === true) {
     const dice = Math.trunc(Math.random() * 6) + 1;
     if (dice !== 1) {
+      console.log(gameState.playerInfo[gameState.currentPlayerId])
       gameState.currentScore += dice;
     } else {
       gameState.currentScore = 0;
       gameState.endTurn();
     }
   }
-  console.log(gameState.currentScore);
   updateUI();
 }
 
@@ -79,21 +90,48 @@ function holdEvent() {
   updateUI();
 }
 
+function scoreUi() {
+  document.querySelector("#score-1").innerText = gameState.playerInfo[1].totalScore;
+  document.querySelector("#score-2").innerText = gameState.playerInfo[2].totalScore;
+  document.querySelector("#current-score").innerText = gameState.currentScore;
+}
+
 function initializeUI() {
   playerNameChangeEvent();
   document.querySelector("#player1Name").innerText = gameState.playerInfo[1].name;
   document.querySelector("#player2Name").innerText = gameState.playerInfo[2].name;
-  document.querySelector("#current-score").innerText = gameState.currentScore;
+  scoreUi();
   document.querySelector("#start-area").classList.add("hidden");
+  document.querySelector("#play-area").classList.remove("hidden");
 }
 
 function updateUI() {
-  document.querySelector("#current-score").innerText = gameState.currentScore;  
-  document.querySelector("#score-1").innerText = gameState.playerInfo[1].totalScore;
-  document.querySelector("#score-2").innerText = gameState.playerInfo[2].totalScore;
-  if (gameState.gameOver === true) {
-    window.alert("Game Over!");
+  if (gameState.currentPlayerId === 1) {
+  document.querySelector("#player1Name").classList.add("current-player");
+  document.querySelector("#player2Name").classList.remove("current-player");
+  } else if (gameState.currentPlayerId === 2) {
+  document.querySelector("#player2Name").classList.add("current-player");
+  document.querySelector("#player1Name").classList.remove("current-player");
   }
+  scoreUi(); 
+  if (gameState.gameOver === true) {
+    victoryEvent();
+  }
+}
+
+function victoryEvent() {
+  document.querySelector("#play-area").classList.add("hidden");
+  document.querySelector("#victory-area").classList.remove("hidden");
+  if (gameState.currentPlayerId === 1) {
+    document.querySelector("#player-victor").innerText = gameState.playerInfo[1].name;
+  } else if (gameState.currentPlayerId === 2) {
+    document.querySelector("#player-victor").innerText = gameState.playerInfo[2].name;
+  }
+}
+
+function newGame() {
+  gameState.resetScore();
+  scoreUi();
 }
 
 window.addEventListener("load", function() {
@@ -103,6 +141,14 @@ window.addEventListener("load", function() {
 });
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Stylize start area
+//  + create custom button
+//  + customize heading
+// Stylize play area
+
+// --- create victory screen
+// create play again feature
+// create number of times won
 // --- Add player name input event and submit check
 // Pun Dan (Highest Level of Importance!!)
 // --- Switch Player function
@@ -112,26 +158,10 @@ window.addEventListener("load", function() {
 // --- Write game victory check
 // Finish UI
 // --- Apply current score to total score
-// UI dynamically change player name
+// --- UI dynamically change player name
 
 // Code Graveyard ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// GameObject.prototype.addPlayer = function(player) {
-//   player.id = this.assignPlayerId();
-//   this.playerInfo[player.id] = player;
-// };
-
-// GameObject.prototype.assignPlayerId = function() {
-//   this.playerId += 1;
-//   return this.playerId;
-// };
-
-// GameObject.prototype.findPlayerInfo = function(id) {
-//   if (this.playerInfo[id] !== undefined) {
-//     return this.playerInfo[id];
-//   }
-//   return false;
-// };
 
 
 
