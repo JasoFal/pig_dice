@@ -130,14 +130,17 @@ function victoryEvent() {
 }
 
 function newGame() {
+  document.querySelector("#victory-area").classList.add("hidden");
+  document.querySelector("#play-area").classList.remove("hidden");
   gameState.resetScore();
-  scoreUi();
+  updateUI();
 }
 
 window.addEventListener("load", function() {
   this.document.querySelector("#btn-new").addEventListener("click", startGame);
   this.document.querySelector("#btn-roll").addEventListener("click", rollEvent);
   this.document.querySelector("#btn-hold").addEventListener("click", holdEvent);
+  this.document.querySelector("#btn-reset").addEventListener("click", newGame);
 });
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
