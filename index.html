@@ -11,7 +11,15 @@
 
 <body>
   <div class="container">
-    <div id="start-area">
+    <div class="form-group" id="start-area">
+      <form id="player-1-name-input">
+        <label for="player-1">Player 1 Name</label>
+        <input type="text" class="form-control" id="player-1-name-input" name="player-1-name-input">
+      </form>
+      <form id="player-2-name-input">
+        <label for="player-2">Player 2 Name</label>
+        <input type="text" class="form-control" id="player-2-name-input" name="player-2-name-input">
+      </form>
       <button type="button" id="btn-new">Start Game</button>
     </div>
     <div id="play-area">
@@ -21,7 +29,7 @@
             Total Score<br>
             <span class="player1" id="player1Name"></span>
           </h2>
-          <p class="score" id="score-1"></p>
+          <p class="score" id="score-1">0</p>
         </div>
       </div>
       <div class="player player-2">
