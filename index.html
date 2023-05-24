@@ -11,17 +11,23 @@
 
 <body>
   <div class="container">
-    <h1 id="main-heading">Pig: The Game</h1>
-    <div class="form-group" id="start-area">
-      <form id="player-1-name-input">
-        <label for="player-1">Player 1 Name</label>
-        <input type="text" class="form-control" id="player-1-name-input" name="player-1-name-input">
-      </form>
-      <form id="player-2-name-input">
-        <label for="player-2">Player 2 Name</label>
-        <input type="text" class="form-control" id="player-2-name-input" name="player-2-name-input">
-      </form>
-      <button type="button" id="btn-new">Start Game</button>
+    <div class="row align-items-center">
+      <div class="col">
+        <h1 id="main-heading">Pig: The Game</h1>
+        <div class="form-group" id="start-area">
+          <div id="player-1-div">
+            <form id="player-1-name-input">
+              <label for="player-1">Player 1 Name</label>
+              <input type="text" class="form-control" id="player-1-name-input" name="player-1-name-input">
+            </form>
+          </div>
+          <form id="player-2-name-input">
+            <label for="player-2">Player 2 Name</label>
+            <input type="text" class="form-control" id="player-2-name-input" name="player-2-name-input">
+          </form>
+          <button type="button" id="btn-new">Start Game</button>
+        </div>
+      </div>
     </div>
     <div id="play-area" class="hidden ">
       <div class="player player-1 player-current">
@@ -46,14 +52,14 @@
           <p id="current-score"></p>
         </div>
         <div id="btn-zone">
-          <button type="button" id="btn-roll">Roll Dice</button>
-          <button type="button" id="btn-hold">Hold</button>
+          <button type="button" id="btn btn-roll">Roll Dice</button>
+          <button type="button" id="btn btn-hold">Hold</button>
         </div>
       </div>
     </div>
     <div id="victory-area" class="hidden">
       <h1 id="victory-heading"><span id="player-victor"></span> WINS!!</h1>
-      <button type="button" id="btn-reset">Play Again</button>
+      <button type="button" id="btn btn-reset">Play Again</button>
     </div>
   </div>
 </body>

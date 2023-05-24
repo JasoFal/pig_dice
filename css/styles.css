@@ -5,3 +5,9 @@
 .current-player {
   color: red;
 }
+
+#main-heading {
+  text-align: center;
+  font-size: 80px;
+}
+
