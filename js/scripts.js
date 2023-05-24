@@ -143,28 +143,6 @@ window.addEventListener("load", function() {
   this.document.querySelector("#btn-reset").addEventListener("click", newGame);
 });
 
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Stylize start area
-//  + create custom button
-//  + customize heading
-// Stylize play area
-
-// --- create victory screen
-// create play again feature
-// create number of times won
-// --- Add player name input event and submit check
-// Pun Dan (Highest Level of Importance!!)
-// --- Switch Player function
-// --- UI update FUNction
-// --- hold event function
-// --- Finish rollEvent Functionality
-// --- Write game victory check
-// Finish UI
-// --- Apply current score to total score
-// --- UI dynamically change player name
-
-// Code Graveyard ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 
